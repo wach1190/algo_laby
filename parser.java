@@ -11,3 +11,5 @@ import java.util.Random; // maybe useless here, to see ...
 // First part : decode text labyrinthus file
 
 // http://www.infres.enst.fr/~hudry/coursJava/fichiersEtSaisies/lireFichierTexte.html
+
+//coolos
