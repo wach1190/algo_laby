@@ -8,29 +8,40 @@ import java.lang.*;
 public class Emplacement
 {
 	
-	private ArrayList<int[]> list = new ArrayList<int[]>() ;
-	public ArrayList<Emplacement> successeurList = new ArrayList<Emplacement>() ;
+	int[]  coordonnee = new int[2] ;
+	private ArrayList<Emplacement> successeurList = new ArrayList<Emplacement>() ;
 	char name;
 	boolean pakkuman = false;
 	boolean monstre  = false;
 	boolean bonbon  = false;
 	boolean sortie  = false;
-	int nbrMonstre=0;
-	int nbrBonbon=0;
 	String direction ; 
 
-	public Emplacement(char l){
+	public Emplacement(char l, int x,int y){
 		this.name = l;
+		coordonnee[0]=x;
+		coordonnee[1]=y;
 		
 	}
-	public void addEmplacement(int x,int y){
-		int e[] = new int[2];
-		e[0]=x;
-		e[1]=y;
-		list.add(e);
-
+	public boolean egale(int x,int y){
+		if((coordonnee[0]==x) && (coordonnee[1]==y)){
+			return true;
+		} 
+		else{
+			return false;
+		}
+	}
+	public int getX(){
+		return coordonnee[0];
+		
 	}
 
+	public int getY(){
+		return coordonnee[1];
+		
+	}
+	
+	
 	public void addSuccesseur(Emplacement s){
 		successeurList.add(s);
 	}
@@ -40,49 +51,51 @@ public class Emplacement
 	}
 
 	public int estConnecte(Emplacement s) {
-		int distance = 0;
 		boolean existe = false ;
-		/*if(this.successeurList.contains(s)){
-			distance=1;
-		}
-		else{
+		int somme = 1000;
+		if(this.successeurList.contains(s)){
+			existe = true ;
+			somme=1;
+		} 
+		else {
 			for(Emplacement c : this.successeurList){
-			
-			if(c.successeurList.contains(s)){
-				distance =1+1;break;
-			}}
-		}*/
-		
-		if(this.successeurList.contains(s)){ 
-				existe=true;
-				distance +=1;
-			}
-			else{
-			 	if (successeurConnecte(s)){
+				System.out.println("jata");
+				int r = c.estConnecte(s);
+				if(r<1000){
+					System.out.println("jata");
 					existe=true;
-					distance +=1;			
+					somme = 1+r;				
+				}
+			}
+				
+			
+		}
+		return somme ; 
+	}
+	public int succeseurConnecte(Emplacement pred , Emplacement s) {
+		boolean existe = false ;
+		int somme = 1000;
+		if(this.successeurList.contains(s)){
+			existe = true ; 
+			somme=1;
+		} 
+		
+		else {
+			ArrayList<Emplacement> temp= this.successeurList ;
+			temp.remove(pred);
+			int i =0;
+			while(i<temp.size() && !existe ){
+				Emplacement c = temp.get(i);
+				int r = c.succeseurConnecte(this,s);
+				if(r<1000){
+					existe=true;
+					somme = 1+r;				
 				}
 				
 			}
-		
-		return  distance; 
-	}
-
-
-	public boolean successeurConnecte(Emplacement s){
-		boolean existe =false;
-		int i =0;
-		while(i<this.successeurList.size() && !existe){
-			 if ((this.successeurList.get(i)).successeurList.contains(s)){
-				existe=true;
-				//distance +=1;			
-			}
-			i+=1;
 		}
-		
-		return existe;
+		return somme ; 
 	}
-
 	
 	public void setPakkuman(){
 		this.pakkuman = true ;	
@@ -94,7 +107,6 @@ public class Emplacement
 
 	public void setMonstre(){
 		this.monstre = true ;
-		this.nbrMonstre += 1; 	
 	}
 	
 	public boolean estMonstre(){
@@ -103,7 +115,6 @@ public class Emplacement
 
 	public void setBonbon(){
 		this.bonbon = true ;
-		this.nbrBonbon += 1; 	
 	}
 	
 	public boolean estBonbon(){
@@ -117,12 +128,7 @@ public class Emplacement
 	public boolean estSortie(){
 		return this.sortie ;	
 	}
-	public int getNbrMonstre(){
-		return this.nbrMonstre ;
-	}
-	public int getNbrBonbon(){
-		return this.nbrBonbon ;
-	}
+	
 	public ArrayList<Emplacement> getSuccesseurList(){
 
 		return this.successeurList;
@@ -133,7 +139,7 @@ public class Emplacement
 	}
 	public  String toString(){
 		String s = new String("")  ;
-		String t = new String("")  ;
+		/*String t = new String("")  ;
 		int e[] = new int[2];
 		int f[] = new int[2];
 		e = list.get(0);
@@ -161,7 +167,20 @@ public class Emplacement
 	
 			t = i+1 + ". (" + e[0] + ","+ e[1] + ")  "+d+"\n" ;
 			s+=t;
+		}*/
+		if(bonbon){
+			s="bonbon";
 		}
+		else if(monstre){
+			s="monstre";
+		} 
+		else if(sortie){
+			s="sortie";
+		} 
+		else if(pakkuman){
+			s="pakkuman";
+		} 
+		s = "(" + coordonnee[0] + ","+ coordonnee[1] + ")  "+ direction + "  "+ s +" \n";
 		return s;
 	}
 	

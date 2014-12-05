@@ -17,9 +17,7 @@ public class Labyrinthe
 		Parser p = new Parser(s);    //on effectue le parsing
 		p.readInputFile();
 		List<Emplacement> emplacements =  p.getListEmplacements(); //recupere la list
-		int monstre = p.getNbrMonstreTotal() ;
-		int bonbon = p.getNbrBonbonTotal() ;
-		Chemin c = new Chemin(emplacements,monstre,bonbon);
+		Chemin c = new Chemin(emplacements);
 		c.Dijkstra();		//effectue la detection sur ces cercles
 	}
-}
+}		
