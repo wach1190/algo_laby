@@ -137,6 +137,11 @@ public class Emplacement
 	public void setDirection(String s){
 		this.direction = s;
 	}
+    
+    public String getDirection(){
+        return this.direction
+    }
+    
 	public  String toString(){
 		String s = new String("")  ;
 		/*String t = new String("")  ;
