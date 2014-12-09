@@ -18,16 +18,16 @@ public class OutputF{ // on va devoir mettre en argument la classe labyrinthe, a
         object = toOut; // le laby passé en argument est celui qu'on analysera pour l'output
     }
     public makeOutput(){
-        System.out.print("Le labyrinthe à une dimension de : " + "8x8"); // get la dimension
-        System.out.print(" Il contient" + "3"+"monstres et " + "4"+ "bonbons"); // get monstres et bonbons
-        System.out.print("Monsieur Pakkuman se trouve en position" + "position"); // get position
-        System.out.print("Le monstre se trouve en position ..."); // dois je faire une boucle qui parcous chaque emplacement du labyrinthe, trouve ceux qui contiennetn un monstre, et les affiche ? ça n'est pas très efficaces non? y-a-t'il un endroit où sont stockés toutes ces fameuses cases ? ==> à investiguer
+        System.out.println("Le labyrinthe à une dimension de : " + "8x8"); // get la dimension
+        System.out.println(" Il contient" + "3"+"monstres et " + "4"+ "bonbons"); // get monstres et bonbons
+        System.out.println("Monsieur Pakkuman se trouve en position" + "position"); // get position
+        System.out.println("Le monstre se trouve en position ..."); // dois je faire une boucle qui parcous chaque emplacement du labyrinthe, trouve ceux qui contiennetn un monstre, et les affiche ? ça n'est pas très efficaces non? y-a-t'il un endroit où sont stockés toutes ces fameuses cases ? ==> à investiguer
         System.out.print("Les bonbons en positions ..."); // même questionnement que pour les monstres
         System.out.print("Déplacements de M.Pakkuman :");
         // Suivi de la liste des déplacements, à get dans historic ...
         // Donc normalement, je choppe la liste d'emplacements contenu dans la classe labyrinthe, et je la print, tout simplement
         for emplacement in object.emplacements {
-            System.out.print(i +". "+ "(" + emplacement.getX + ", " +emplacement.getY + ") " + emplacement.getDirection);
+            System.out.println(i +". "+ "(" + emplacement.getX + ", " +emplacement.getY + ") " + emplacement.getDirection);
         }
 //        historic = Parser.getListEmplacements(); // on get cette fameuse liste
 //        // Maintenant on doit print une ligne par emplacement.
