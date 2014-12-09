@@ -1,0 +1,1 @@
+// Classe d'output pour le labyrinthe

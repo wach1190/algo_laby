@@ -13,7 +13,7 @@ public class Parser
 	private int nbrMonstreTotal =0;
 	private int nbrBonbonTotal =0;
 	
-	public Parser (String name) {			//contructeur
+	public Parser (String name) {			//constructeur
 		this.fileName = name ;
 	}
 	
