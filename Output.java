@@ -5,9 +5,11 @@ import java.lang.*;
 import java.io.File;
 import parser.java;
 
-public class Main{
+public class Main{ // on va devoir mettre en argument la classe labyrinthe, afin de get toutes les infos nécessaires à l'output
     // espace attributs ==> to see later
-    File f = new File("Output_LABY");
+    File f = new File("Output_LABY"); // output file
+    Parser object = new Parser
+    
     List<Emplacement> historic; // historique des emplacements à renvoyer
     public makeOutput(){
         System.out.print("Le labyrinthe à une dimension de : " + "8x8"); // get la dimension
