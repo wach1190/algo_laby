@@ -184,7 +184,8 @@ public class Emplacement
 		} 
 		else if(pakkuman){
 			s="pakkuman";
-		} 
+		}
+        // on à un problème ici, car dans tous les cas, la ligne ci dessous s'éxécute, et remplace donc le contenu de s (qui pourrait être bonbon/pakku/ etc) par sa coordonnée et direction, donc les clauses au dessus sont obselètes 
 		s = "(" + coordonnee[0] + ","+ coordonnee[1] + ")  "+ direction + "  "+ s +" \n";
 		return s;
 	}
