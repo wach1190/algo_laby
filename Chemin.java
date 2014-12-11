@@ -9,42 +9,42 @@ public class Chemin
 	
 	private	List<Emplacement> graphe = new ArrayList<Emplacement> (); // Est-ce la matrice du labyrinthe ? ==> voir type ArrayList ...
 	private int size ;  // taille de la liste 
-	private int nbrMontreTotal ;
+	private int nbrMonstreTotal ;
 	private int nbrBonbonTotal ;
 	private Emplacement pakkuman ;
 	private Emplacement sortie ;
-	private List<Emplacement> listMonstre = new ArrayList<Emplacement> ();
-	private List<Emplacement> listBonbon = new ArrayList<Emplacement> ();
-	private	List<Emplacement> prec = new ArrayList<Emplacement> ();
+	private List<Emplacement> listMonstre = new ArrayList<Emplacement> (); // intéressant, pas besoin de refaire la boucle pour l'output
+	private List<Emplacement> listBonbon = new ArrayList<Emplacement> (); // idem
+	private	List<Emplacement> prec = new ArrayList<Emplacement> (); // usage ?
 	private	List<Integer> dist = new ArrayList<Integer> ();
 	 // vecteurs de traitement complet
 	
-	public Chemin(List<Emplacement> e ){
-		this.graphe = e ;
-		this.size = e.size();
-		for(Emplacement c : this.graphe){
+	public Chemin(List<Emplacement> e ){ // constructeur
+		this.graphe = e ; // est-ce véritablement utile/nécessaire de recopier la liste ?
+		this.size = e.size(); // surtout qu'on utilise e au final ...
+		for(Emplacement c : this.graphe){ // synthaxe ? ==> voir google (on boucle tous les emplacement du graphe j'imagine
 			if(c.estPakkuman() ){
 				pakkuman = c;
 			}
-			else if(c.estSortie() ){
+			else if(c.estSortie() ){ // comment on set l'attribut estSortie dans le parser ? ==> voir parser.java
 				sortie = c;
 			} 
-			else if(c.estMonstre() ){
+			else if(c.estMonstre() ){ // intéressant
 				listMonstre.add(c);
-				nbrMontreTotal+=1;
+				nbrMonstreTotal+=1;
 			}
 			else if(c.estBonbon() ){
 				listBonbon.add(c);
 				nbrBonbonTotal +=1;
 			}
 		}
-		for(int i=0; i< this.size;++i){
+		for(int i=0; i< this.size;++i){ // que fait cette boucle ???
 			dist.add(1000);
 			prec.add(null);
 		}
 	}
 	
-	public void Dijkstra(){
+	public void Dijkstra(){ //==> voir Dijkstra syllabus ( :) )
 		List<Emplacement> M = new ArrayList<Emplacement> ();
 		int distance = 0;
 		for(int i=0; i< this.size;++i){
