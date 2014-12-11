@@ -7,7 +7,7 @@ import java.lang.*;
 public class Chemin
 {
 	
-	private	List<Emplacement> graphe = new ArrayList<Emplacement> ();
+	private	List<Emplacement> graphe = new ArrayList<Emplacement> (); // Est-ce la matrice du labyrinthe ? ==> voir type ArrayList ...
 	private int size ;  // taille de la liste 
 	private int nbrMontreTotal ;
 	private int nbrBonbonTotal ;
