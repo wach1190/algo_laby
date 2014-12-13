@@ -12,8 +12,8 @@ public class OutputF{ // on va devoir mettre en argument la classe labyrinthe, a
     int i = 1; // compteur d'emplacements, incrémenté à chaque impression
     
     // Constructeur avec argument :
-    public static void main(Labyrinthe toOut){
-        object = toOut; // le laby passé en argument est celui qu'on analysera pour l'output
+    public static void main(chemin toOut){
+        object = toOut; // copie inutile non ?
     }
     public makeOutput(){
         System.out.println("Le labyrinthe à une dimension de : " + "8x8"); // get la dimension
@@ -28,10 +28,6 @@ public class OutputF{ // on va devoir mettre en argument la classe labyrinthe, a
             System.out.println(i +". "+ "(" + emplacement.getX + ", " +emplacement.getY + ") " + emplacement.getDirection);
             ++i; // incrémentation du compteur d'emplacements (simple norme de l'output)
         }
-//        historic = Parser.getListEmplacements(); // on get cette fameuse liste
-//        // Maintenant on doit print une ligne par emplacement.
-//        for(int i = 0; i < 10; ++i){
-//            System.out.println()historic[i]
-        }
+
     }
 }
