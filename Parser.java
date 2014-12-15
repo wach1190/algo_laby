@@ -19,7 +19,7 @@ public class Parser
 	
 	public void readInputFile() {			//lit le fichier
 
-		String [][] labyrinthe;
+		String [][] labyrinthe; // tableau de charactères représentant le laby
   		String[] values ;	
 		char [] values1 ;
 		char [] temp;

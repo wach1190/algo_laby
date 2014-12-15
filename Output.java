@@ -3,17 +3,18 @@
 import java.util.*;
 import java.lang.*;
 import java.io.File;
-import parser.java;
+import Parser.java;
+import Chemin.java;
 
 public class OutputF{ // on va devoir mettre en argument la classe labyrinthe, afin de get toutes les infos nécessaires à l'output
     // espace attributs ==> to see later
     File f = new File("Output_LABY"); // output file
-    Labyrinthe object;
+    private chemin object;
     int i = 1; // compteur d'emplacements, incrémenté à chaque impression
     
     // Constructeur avec argument :
-    public static void main(chemin toOut){
-        object = toOut; // copie inutile non ?
+    public static void main(chemin toOut){ // prend le chemin (préalablement traité par dijkstra) en paramètre afin de l'outputer dans un fichier
+        object = toOut; // copie inutile non ? argument private ???
     }
     public makeOutput(){
         System.out.println("Le labyrinthe à une dimension de : " + "8x8"); // get la dimension
