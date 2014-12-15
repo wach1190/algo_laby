@@ -22,7 +22,7 @@ public class Lien
 		}
 	}
 	public Emplacement getExtrimite(Emplacement e){
-		ArrayList<Emplacement> temp = listEmplacement;
+		ArrayList<Emplacement> temp = listEmplacements;
 		temp.remove(e);
 		return temp.get(0);
 	}

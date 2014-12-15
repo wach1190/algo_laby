@@ -14,8 +14,8 @@ public class Chemin
 	private int nbrBonbonTotal ;
 	private Emplacement pakkuman ;
 	private Emplacement sortie ;
-	private List<Emplacement> listMonstre= = new ArrayList<Emplacement> ();
-	private List<Emplacement> listBonbon= = new ArrayList<Emplacement> ();
+	private List<Emplacement> listMonstre = new ArrayList<Emplacement> ();
+	private List<Emplacement> listBonbon = new ArrayList<Emplacement> ();
 	private	List<Emplacement> prec = new ArrayList<Emplacement> ();
 	private	List<Integer> dist = new ArrayList<Integer> ();
 	 // vecteurs de traitement complet
@@ -93,7 +93,7 @@ public class Chemin
 		}
 	}
 	public int tailleLien(Emplacement e, Emplacement f){
-		Lien l = new Lien (Emplacement e,Emplacement f);
+		Lien l = new Lien (e,f);
 		if(arcs.contains(l)){
 			return 1;
 		}

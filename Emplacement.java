@@ -123,7 +123,7 @@ public class Emplacement
 
 		return this.successeurList;
 	}
-	public ArrayList<Emplacement> getLienList(){
+	public ArrayList<Lien> getLienList(){
 
 		return this.lienList;
 	}

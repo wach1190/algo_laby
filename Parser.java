@@ -255,7 +255,7 @@ public class Parser
 	public List<Emplacement> getListEmplacements(){  //renvoie le liste des emplacements
 		return this.listEmplacements;
 	}
-	public List<Emplacement> getListLiens(){  //renvoie le liste liens
+	public List<Lien> getListLiens(){  //renvoie le liste liens
 		return this.listLiens;
 	}
 	
