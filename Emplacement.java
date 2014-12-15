@@ -10,6 +10,7 @@ public class Emplacement
 	
 	int[]  coordonnee = new int[2] ;
 	private ArrayList<Emplacement> successeurList = new ArrayList<Emplacement>() ;
+	private ArrayList<Lien> lienList = new ArrayList<Lien>() ;
 	char name;
 	boolean pakkuman = false;
 	boolean monstre  = false;
@@ -40,8 +41,9 @@ public class Emplacement
 		return coordonnee[1];
 		
 	}
-	
-	
+	public void addLien(Lien s){
+		lienList.add(s);
+	}
 	public void addSuccesseur(Emplacement s){
 		successeurList.add(s);
 	}
@@ -52,46 +54,34 @@ public class Emplacement
 
 	public int estConnecte(Emplacement s) {
 		boolean existe = false ;
-		int somme = 1000;
+		int somme = 0;
 		if(this.successeurList.contains(s)){
-			existe = true ;
+			existe = true ; 
 			somme=1;
 		} 
 		else {
-			for(Emplacement c : this.successeurList){
-				System.out.println("jata");
-				int r = c.estConnecte(s);
-				if(r<1000){
-					System.out.println("jata");
-					existe=true;
-					somme = 1+r;				
-				}
+			for(Emplacement c : this.successeurList ){
+				somme =c.succeseurConnecte(this,s);
+				if(somme>0){ somme+=1;}
 			}
-				
-			
 		}
 		return somme ; 
 	}
 	public int succeseurConnecte(Emplacement pred , Emplacement s) {
 		boolean existe = false ;
-		int somme = 1000;
+		int somme = 0;
 		if(this.successeurList.contains(s)){
 			existe = true ; 
 			somme=1;
 		} 
-		
+		else if (name == s.name){
+			somme=0;
+		}
 		else {
 			ArrayList<Emplacement> temp= this.successeurList ;
 			temp.remove(pred);
-			int i =0;
-			while(i<temp.size() && !existe ){
-				Emplacement c = temp.get(i);
-				int r = c.succeseurConnecte(this,s);
-				if(r<1000){
-					existe=true;
-					somme = 1+r;				
-				}
-				
+			for(Emplacement c : temp ){
+				somme =1 + c.succeseurConnecte(this,s);
 			}
 		}
 		return somme ; 
@@ -133,15 +123,13 @@ public class Emplacement
 
 		return this.successeurList;
 	}
-	
+	public ArrayList<Emplacement> getLienList(){
+
+		return this.lienList;
+	}
 	public void setDirection(String s){
 		this.direction = s;
 	}
-    
-    public String getDirection(){
-        return this.direction
-    }
-    
 	public  String toString(){
 		String s = new String("")  ;
 		/*String t = new String("")  ;
@@ -184,9 +172,8 @@ public class Emplacement
 		} 
 		else if(pakkuman){
 			s="pakkuman";
-		}
-        // on à un problème ici, car dans tous les cas, la ligne ci dessous s'éxécute, et remplace donc le contenu de s (qui pourrait être bonbon/pakku/ etc) par sa coordonnée et direction, donc les clauses au dessus sont obselètes 
-		s = "(" + coordonnee[0] + ","+ coordonnee[1] + ")  "+ direction + "  "+ s +" \n";
+		} 
+		s = "(" + coordonnee[0] + ","+ coordonnee[1] + ")  "+ direction + "  "+ s+"\n";
 		return s;
 	}
 	

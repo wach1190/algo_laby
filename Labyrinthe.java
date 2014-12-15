@@ -14,10 +14,11 @@ public class Labyrinthe
 		else{
 			s = "Labyrinthe.txt" ;
 		}
-		Parser p = new Parser(s);    //On créé un objet parser
-		p.readInputFile(); // lecture du fichier texte labyrinthe
+		Parser p = new Parser(s);    //on effectue le parsing
+		p.readInputFile();
 		List<Emplacement> emplacements =  p.getListEmplacements(); //recupere la list
-		Chemin c = new Chemin(emplacements);
+		List<Emplacement> liens =  p.getListLiens();
+		Chemin c = new Chemin(emplacements,liens);
 		c.Dijkstra();		//effectue la detection sur ces cercles
 	}
 }		

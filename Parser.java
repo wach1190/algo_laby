@@ -10,16 +10,17 @@ public class Parser
 	
 	private String fileName ;
 	private ArrayList<Emplacement> listEmplacements = new ArrayList<Emplacement>();
+	private ArrayList<Lien> listLiens = new ArrayList<Lien>();
 	private int nbrMonstreTotal =0;
 	private int nbrBonbonTotal =0;
 	
-	public Parser (String name) {			//constructeur
+	public Parser (String name) {			//contructeur
 		this.fileName = name ;
 	}
 	
 	public void readInputFile() {			//lit le fichier
 
-		String [][] labyrinthe; // tableau de charactères représentant le laby
+		String [][] labyrinthe;
   		String[] values ;	
 		char [] values1 ;
 		char [] temp;
@@ -147,43 +148,115 @@ public class Parser
 					}
 					
 					else if((g%2)==0){
-							int o =0;
-							int b=0;
 							for (Emplacement e : listEmplacements){
 								if(e.egale((g-1)/2,h/2)){
-									o= listEmplacements.indexOf(e);
+									sommet1=e;
 								}
 								else if(e.egale((g+1)/2,h/2)){
-									b= listEmplacements.indexOf(e);
+									sommet2=e;
 								}
 							}
-							(listEmplacements.get(o)).addSuccesseur(listEmplacements.get(b));
-							//(listEmplacements.get(b)).addSuccesseur(listEmplacements.get(o));
-							
+							Lien l = new Lien(sommet1,sommet2);
+							listLiens.add(l);
 						
 					}	
 					else if((h%2)==0){
-						int o =0;
-							int b=0;
-							for (Emplacement e : listEmplacements){
+						
+						for (Emplacement e : listEmplacements){
 								if(e.egale(g/2,(h-1)/2)){
-									o= listEmplacements.indexOf(e);
+									sommet1=e;
 								}
 								else if(e.egale(g/2,(h+1)/2)){
-									b= listEmplacements.indexOf(e);
+									sommet2=e;
 								}
 							}
-							(listEmplacements.get(o)).addSuccesseur(listEmplacements.get(b));
-							//(listEmplacements.get(b)).addSuccesseur(listEmplacements.get(o));
+							Lien l = new Lien(sommet1,sommet2);
+							listLiens.add(l);
+							sommet1.addSuccesseur(sommet2);
+					
 					}
+					
 				}								
 			}
-		}	
+		}
+		
+		
+		/*Emplacement e0= new Emplacement(Character.forDigit(0, 10));
+		
+		e0.addEmplacement(0,0);
+
+		Emplacement e1= new Emplacement(Character.forDigit(1, 10));
+		e1.addEmplacement(0,1);
+		e1.addEmplacement(0,2);
+		e1.addEmplacement(0,3);
+			
+
+
+		Emplacement e2= new Emplacement(Character.forDigit(2, 10));
+		
+		e2.addEmplacement(1,0);
+		e2.addEmplacement(1,1);
+		e2.addEmplacement(1,2);
+
+
+		
+
+		Emplacement e3= new Emplacement(Character.forDigit(3, 10));
+		
+		e3.addEmplacement(1,3);
+
+		Emplacement e4= new Emplacement(Character.forDigit(4, 10));
+		
+		e4.addEmplacement(2,3);	
+		e4.addEmplacement(2,2);
+		e4.addEmplacement(2,1);
+		e4.addEmplacement(2,0);
+		e4.addEmplacement(3,0);
+		e4.addEmplacement(3,1);
+		e4.addEmplacement(3,0);
+		e4.addEmplacement(3,1);
+		e4.addEmplacement(3,2);
+
+		Emplacement e5= new Emplacement(Character.forDigit(5, 10));
+		
+		e5.addEmplacement(3,3);
+
+		e0.addSuccesseur(e2);
+		e2.addSuccesseur(e0);
+
+		e1.addSuccesseur(e3);
+		e3.addSuccesseur(e1);
+
+		e2.addSuccesseur(e3);
+		e3.addSuccesseur(e2);
+
+		e4.addSuccesseur(e3);
+		e3.addSuccesseur(e4);
+
+		e4.addSuccesseur(e5);
+		e5.addSuccesseur(e4);
+
+		e0.setPakkuman();
+		e2.setMonstre();
+		e4.setMonstre();
+		
+		e1.setBonbon();	
+
+		listEmplacements.add(e0);
+		listEmplacements.add(e1);
+		listEmplacements.add(e2);
+		listEmplacements.add(e3);
+		listEmplacements.add(e4);
+		listEmplacements.add(e5);
+		*/
+		
 	}
 	
 	public List<Emplacement> getListEmplacements(){  //renvoie le liste des emplacements
 		return this.listEmplacements;
 	}
-	
+	public List<Emplacement> getListLiens(){  //renvoie le liste liens
+		return this.listLiens;
+	}
 	
 }

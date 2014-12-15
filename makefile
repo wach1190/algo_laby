@@ -14,6 +14,7 @@ INPUT = "labyrinthe.txt"
 
 
 CLASSES = Emplacement.java \
+	Lien.java \
 	Parser.java \
 	Chemin.java \
 	Labyrinthe.java 
